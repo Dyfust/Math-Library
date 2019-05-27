@@ -97,13 +97,22 @@ float Vector2::square_magnitude() const
 	return x * x + y * y;
 }
 
-Vector2 Vector2::normalized() const
+Vector2 Vector2::normalise() const
 {
 	float mag = magnitude();
-	return Vector2(this->x / mag, this->y / mag);
+	return Vector2(x / mag, y / mag);
+}
+
+Vector2& Vector2::normalized()
+{
+	float mag = magnitude();
+	x /= mag;
+	y /= mag;
+
+	return *this;
 }
 
 float Vector2::dot(Vector2& lhs) const
 {
-	x * lhs.x + y * lhs.y;
+	return x * lhs.x + y * lhs.y;
 }

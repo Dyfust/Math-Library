@@ -1,24 +1,28 @@
 #include "Vector4.h"
 #include <cmath>
 
-Vector4::Vector4(float x, float y, float z, float w)
+Vector4::Vector4() 
 {
-	this->x = x;
-	this->y = y;
-	this->z = z;
-	this->w = w;
+	x = 0.0f;
+	y = 0.0f;
+	z = 0.0f;
+	w = 0.0f;
 }
+
+Vector4::Vector4(float a_x, float a_y, float a_z, float a_w) : x(a_x), y(a_y), z(a_z), w(a_w)
+{}
 
 Vector4::~Vector4()
 {
 
 }
 
-explicit Vector4::operator float* () 
+Vector4::operator float* () 
 {
 	return data;
 }
-explicit Vector4::operator const float* () const
+
+Vector4::operator const float* () const
 {
 	return data;
 }
@@ -88,7 +92,7 @@ Vector4& Vector4::operator/= (float& scalar)
 	return *this;
 }
 
-void Vector4::normalize()
+void Vector4::normalise()
 {
 	float mag = magnitude();
 

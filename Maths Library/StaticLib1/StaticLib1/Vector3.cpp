@@ -1,5 +1,12 @@
 #include "Vector3.h"
 
+Vector3::Vector3()
+{
+	x = 0.0f;
+	y = 0.0f;
+	z = 0.0f;
+}
+
 Vector3::Vector3(float x, float y, float z)
 {
 	this->x = x;
@@ -83,6 +90,8 @@ Vector3& Vector3::operator= (Vector3& rhs)
 	x = rhs.x;
 	y = rhs.y;
 	z = rhs.z;
+
+	return *this;
 }
 
 float Vector3::square_magnitude() const
@@ -95,7 +104,7 @@ float Vector3::magnitude() const
 	return sqrt(x*x + y * y + z * z);
 }
 
-void Vector3::normalize()
+void Vector3::normalise()
 {
 	float mag = magnitude();
 
