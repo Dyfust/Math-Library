@@ -34,14 +34,16 @@ public:
 	operator const float*() const;
 	Vector3& operator[] (const int index_a);
 
-	Matrix3 operator+ (Matrix3& rhs);
-	Matrix3 operator- (Matrix3& rhs);
-	Matrix3 operator* (Matrix3& rhs);
-	Matrix3& operator+= (Matrix3& rhs);
-	Matrix3& operator-= (Matrix3& rhs);
-	Matrix3& operator*= (Matrix3& rhs);
+	Matrix3 operator+ (const Matrix3& rhs) const;
+	Matrix3 operator- (const Matrix3& rhs) const;
+	Matrix3 operator* (const Matrix3& rhs) const;
+	Matrix3& operator+= (const Matrix3& rhs);
+	Matrix3& operator-= (const Matrix3& rhs);
+	Matrix3& operator*= (const Matrix3& rhs);
 
-	Vector3 operator* (Vector3& rhs);
+	Matrix3& operator= (const Matrix3& rhs);
+
+	Vector3 operator* (const Vector3& rhs) const;
 
 	void setRotateX(const float& a_rotation);
 	void setRotateY(const float& a_rotation);

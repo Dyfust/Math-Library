@@ -32,27 +32,27 @@ float& Vector4::operator[] (const int index)
 	return data[index];
 }
 
-Vector4 Vector4::operator+ (Vector4& rhs) 
+Vector4 Vector4::operator+ (const Vector4& rhs) const
 {
 	return Vector4(x + rhs.x, y + rhs.y, z + rhs.z, w + rhs.w);
 }
 
-Vector4 Vector4::operator- (Vector4& rhs) 
+Vector4 Vector4::operator- (const Vector4& rhs) const
 {
 	return Vector4(x - rhs.x, y - rhs.y, z - rhs.z, w - rhs.w);
 }
 
-Vector4 Vector4::operator* (float& scalar) 
+Vector4 Vector4::operator* (const float scalar) const
 {
 	return Vector4(x * scalar, y * scalar, z * scalar, w * scalar);
 }
 
-Vector4 Vector4::operator/ (float& scalar) 
+Vector4 Vector4::operator/ (const float scalar) const
 {
 	return Vector4(x / scalar, y / scalar, z / scalar, w / scalar);
 }
 
-Vector4& Vector4::operator+= (Vector4& rhs)
+Vector4& Vector4::operator+= (const Vector4& rhs)
 {
 	x += rhs.x;
 	y += rhs.y;
@@ -62,7 +62,7 @@ Vector4& Vector4::operator+= (Vector4& rhs)
 	return *this;
 }
 
-Vector4& Vector4::operator-= (Vector4& rhs) 
+Vector4& Vector4::operator-= (const Vector4& rhs) 
 {
 	x -= rhs.x;
 	y -= rhs.y;
@@ -72,7 +72,7 @@ Vector4& Vector4::operator-= (Vector4& rhs)
 	return *this;
 }
 
-Vector4& Vector4::operator*= (float& scalar) 
+Vector4& Vector4::operator*= (const float scalar) 
 {
 	x *= scalar;
 	y *= scalar;
@@ -82,12 +82,22 @@ Vector4& Vector4::operator*= (float& scalar)
 	return *this;
 }
 
-Vector4& Vector4::operator/= (float& scalar) 
+Vector4& Vector4::operator/= (const float scalar) 
 {
 	x /= scalar;
 	y /= scalar;
 	z /= scalar;
 	w /= scalar;
+
+	return *this;
+}
+
+Vector4& Vector4::operator= (const Vector4& rhs)
+{
+	x = rhs.x;
+	y = rhs.y;
+	z = rhs.z;
+	w = rhs.w;
 
 	return *this;
 }
@@ -129,4 +139,9 @@ Vector4 Vector4::cross(Vector4& rhs) const
 		z * rhs.x - x * rhs.z,
 		x * rhs.y - y * rhs.x,
 		w);
+}
+
+Vector4 operator*(const float lhs, const Vector4& rhs)
+{
+	return Vector4(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z, lhs * rhs.w);
 }

@@ -1,12 +1,1 @@
-﻿  main.cpp
-  unittest.cpp
-c:\users\s182355\downloads\unittest\unittest\unittest\unittest.cpp(145): error C2679: binary '*': no operator found which takes a right-hand operand of type 'float' (or there is no acceptable conversion)
-  c:\users\s182355\downloads\unittest\unittest\dependencies\vector2.h(28): note: could be 'Vector2 Vector2::operator *(float &) const'
-  c:\users\s182355\downloads\unittest\unittest\unittest\unittest.cpp(145): note: while trying to match the argument list '(Vector2, float)'
-c:\users\s182355\downloads\unittest\unittest\unittest\unittest.cpp(149): error C2679: binary '*': no operator found which takes a right-hand operand of type 'float' (or there is no acceptable conversion)
-  c:\users\s182355\downloads\unittest\unittest\dependencies\vector4.h(37): note: could be 'Vector4 Vector4::operator *(float &)'
-  c:\users\s182355\downloads\unittest\unittest\unittest\unittest.cpp(149): note: while trying to match the argument list '(Vector4, float)'
-c:\users\s182355\downloads\unittest\unittest\unittest\unittest.cpp(157): error C2677: binary '*': no global operator found which takes type 'Vector2' (or there is no acceptable conversion)
-c:\users\s182355\downloads\unittest\unittest\unittest\unittest.cpp(159): error C2677: binary '*': no global operator found which takes type 'Vector3' (or there is no acceptable conversion)
-c:\users\s182355\downloads\unittest\unittest\unittest\unittest.cpp(161): error C2677: binary '*': no global operator found which takes type 'Vector4' (or there is no acceptable conversion)
-  Generating Code...
+﻿  UnitTest.vcxproj -> C:\Users\Rey\Desktop\Repos\Math-Library\UnitTest\Debug\UnitTest.exe

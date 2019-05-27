@@ -23,24 +23,25 @@ public:
 
 	operator const float*() const;
 
-	Vector2 operator+ (Vector2& rhs) const;
-	Vector2 operator- (Vector2& rhs) const;
-	Vector2 operator* (float& scalar) const;
-	Vector2 operator/ (float& scalar) const;
+	Vector2 operator+ (const Vector2& rhs) const;
+	Vector2 operator- (const Vector2& rhs) const;
+	Vector2 operator* (const float scalar) const;
+	Vector2 operator/ (const float scalar) const;
 	
-	Vector2& operator+= (Vector2& rhs);
-	Vector2& operator-= (Vector2& rhs);
-	Vector2& operator*= (float& scalar);
-	Vector2& operator/= (float& scalar);
+	Vector2& operator+= (const Vector2& rhs);
+	Vector2& operator-= (const Vector2& rhs);
+	Vector2& operator*= (const float scalar);
+	Vector2& operator/= (const float scalar);
 
-	Vector2& operator= (Vector2& rhs);
+	Vector2& operator= (const Vector2& rhs);
 
 	float magnitude() const;
 	float square_magnitude() const;
 
-	Vector2 normalise() const;
-	Vector2& normalized();
+	Vector2 normalized() const;
+	void normalise();
 
 	float dot(Vector2& lhs) const;
 };
 
+Vector2 operator * (const float lhs, const Vector2& rhs);

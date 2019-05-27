@@ -124,26 +124,6 @@ Matrix4 & Matrix4::operator-=(const Matrix4 & a_rhs)
 
 Matrix4 & Matrix4::operator=(const Matrix4 & a_rhs)
 {
-	//_2D[0][0] = a_rhs._2D[0][0];
-	//_2D[0][1] = a_rhs._2D[0][1];
-	//_2D[0][2] = a_rhs._2D[0][2];
-	//_2D[0][3] = a_rhs._2D[0][3];
-
-	//_2D[1][0] = a_rhs._2D[1][0];
-	//_2D[1][1] = a_rhs._2D[1][1];
-	//_2D[1][2] = a_rhs._2D[1][2];
-	//_2D[1][3] = a_rhs._2D[1][3];
-
-	//_2D[2][0] = a_rhs._2D[2][0];
-	//_2D[2][1] = a_rhs._2D[2][1];
-	//_2D[2][2] = a_rhs._2D[2][2];
-	//_2D[2][3] = a_rhs._2D[2][3];
-
-	//_2D[3][0] = a_rhs._2D[3][0];
-	//_2D[3][1] = a_rhs._2D[3][1];
-	//_2D[3][2] = a_rhs._2D[3][2];
-	//_2D[3][3] = a_rhs._2D[3][3];
-
 	axes[0] = a_rhs.axes[0];
 	axes[1] = a_rhs.axes[1];
 	axes[2] = a_rhs.axes[2];

@@ -14,6 +14,10 @@ Vector3::Vector3(float x, float y, float z)
 	this->z = z;
 }
 
+Vector3::~Vector3()
+{
+}
+
 float& Vector3::operator[](const int index)
 {
 	return data[index];
@@ -29,27 +33,27 @@ Vector3::operator const float*() const
 	return data;
 }
 
-Vector3 Vector3::operator+ (Vector3& rhs) const
+Vector3 Vector3::operator+ (const Vector3& rhs) const
 {
 	return Vector3(x + rhs.x, y + rhs.y, z + rhs.z);
 }
 
-Vector3 Vector3::operator- (Vector3& rhs) const
+Vector3 Vector3::operator- (const Vector3& rhs) const
 {
 	return Vector3(x - rhs.x, y - rhs.y, z - rhs.z);
 }
 
-Vector3 Vector3::operator* (float scalar) const
+Vector3 Vector3::operator* (const float scalar) const
 {
 	return Vector3(x * scalar, y * scalar, z * scalar);
 }
 
-Vector3 Vector3::operator/ (float scalar) const
+Vector3 Vector3::operator/ (const float scalar) const
 {
 	return Vector3(x / scalar, y / scalar, z / scalar);
 }
 
-Vector3& Vector3::operator+= (Vector3 rhs)
+Vector3& Vector3::operator+= (const Vector3 rhs)
 {
 	x += rhs.x;
 	y += rhs.y;
@@ -58,7 +62,7 @@ Vector3& Vector3::operator+= (Vector3 rhs)
 	return *this;
 }
 
-Vector3& Vector3::operator-= (Vector3 & rhs)
+Vector3& Vector3::operator-= (const Vector3 & rhs)
 {
 	x -= rhs.x;
 	y -= rhs.y;
@@ -67,7 +71,7 @@ Vector3& Vector3::operator-= (Vector3 & rhs)
 	return *this;
 }
 
-Vector3& Vector3::operator*= (float scalar)
+Vector3& Vector3::operator*= (const float scalar)
 {
 	x *= scalar;
 	y *= scalar;
@@ -76,7 +80,7 @@ Vector3& Vector3::operator*= (float scalar)
 	return *this;
 }
 
-Vector3& Vector3::operator/= (float scalar)
+Vector3& Vector3::operator/= (const float scalar)
 {
 	x /= scalar;
 	y /= scalar;
@@ -85,7 +89,7 @@ Vector3& Vector3::operator/= (float scalar)
 	return *this;
 }
 
-Vector3& Vector3::operator= (Vector3& rhs)
+Vector3& Vector3::operator= (const Vector3& rhs)
 {
 	x = rhs.x;
 	y = rhs.y;
@@ -110,6 +114,7 @@ void Vector3::normalise()
 
 	x /= mag;
 	y /= mag;
+	z /= mag;
 }
 
 Vector3 Vector3::normalized() const
@@ -126,4 +131,9 @@ float Vector3::dot(Vector3& rhs) const
 Vector3 Vector3::cross(Vector3& rhs) const
 {
 	return Vector3(y*rhs.z - z*rhs.y, z*rhs.x - x*rhs.z, x*rhs.y - y*rhs.x);
+}
+
+Vector3 operator*(const float lhs, const Vector3 rhs)
+{
+	return Vector3(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
 }

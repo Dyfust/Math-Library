@@ -1,10 +1,14 @@
 #include "Vector2.h"
 #include <cmath>
 
-Vector2::Vector2(float x, float y)
+Vector2::Vector2(float x, float y) : x(x), y(y)
 {
-	this->x = x;
-	this->y = y;
+}
+
+Vector2::Vector2()
+{
+	x = 0.0f;
+	y = 0.0f;
 }
 
 
@@ -28,26 +32,26 @@ float& Vector2::operator[] (const int index)
 	return data[index];
 }
 
-Vector2 Vector2::operator+ (Vector2& rhs) const
+Vector2 Vector2::operator+ (const Vector2& rhs) const
 {
 	return Vector2(this->x + rhs.x, this->y + rhs.y);
 }
 
-Vector2 Vector2::operator- (Vector2& rhs) const
+Vector2 Vector2::operator- (const Vector2& rhs) const
 {
 	return Vector2(this->x - rhs.x, this->y - rhs.y);
 }
 
-Vector2 Vector2::operator* (float& scalar) const
+Vector2 Vector2::operator* (const float scalar) const
 {
 	return Vector2(this->x * scalar, this->y * scalar);
 }
-Vector2 Vector2::operator/ (float& scalar) const
+Vector2 Vector2::operator/ (const float scalar) const
 {
 	return Vector2(this->x / scalar, this->y / scalar);
 }
 
-Vector2& Vector2::operator+= (Vector2& rhs)
+Vector2& Vector2::operator+= (const Vector2& rhs)
 {	
 	x += rhs.x;
 	y += rhs.y;
@@ -55,7 +59,7 @@ Vector2& Vector2::operator+= (Vector2& rhs)
 	return *this;
 }		
 
-Vector2& Vector2::operator-= (Vector2& rhs)
+Vector2& Vector2::operator-= (const Vector2& rhs)
 {
 	x -= rhs.x;
 	y -= rhs.y;
@@ -63,7 +67,7 @@ Vector2& Vector2::operator-= (Vector2& rhs)
 	return *this;
 }
 
-Vector2& Vector2::operator*= (float& scalar)
+Vector2& Vector2::operator*= (const float scalar)
 {
 	x *= scalar;
 	y *= scalar;
@@ -71,7 +75,7 @@ Vector2& Vector2::operator*= (float& scalar)
 	return *this;
 }
 
-Vector2& Vector2::operator/= (float& scalar) 
+Vector2& Vector2::operator/= (const float scalar)
 {
 	x /= scalar;
 	y /= scalar;
@@ -79,7 +83,7 @@ Vector2& Vector2::operator/= (float& scalar)
 	return *this;
 }
 
-Vector2& Vector2::operator= (Vector2& rhs) 
+Vector2& Vector2::operator= (const Vector2& rhs)
 {
 	x = rhs.x;
 	y = rhs.y;
@@ -97,22 +101,25 @@ float Vector2::square_magnitude() const
 	return x * x + y * y;
 }
 
-Vector2 Vector2::normalise() const
+Vector2 Vector2::normalized() const
 {
 	float mag = magnitude();
 	return Vector2(x / mag, y / mag);
 }
 
-Vector2& Vector2::normalized()
+void Vector2::normalise()
 {
 	float mag = magnitude();
 	x /= mag;
 	y /= mag;
-
-	return *this;
 }
 
 float Vector2::dot(Vector2& lhs) const
 {
 	return x * lhs.x + y * lhs.y;
+}
+
+Vector2 operator*(const float lhs, const Vector2& rhs)
+{
+	return Vector2(lhs * rhs.x, lhs * rhs.y);
 }

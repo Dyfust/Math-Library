@@ -45,17 +45,17 @@ Vector3& Matrix3::operator[] (const int index_a)
 	return axes[index_a];
 }
 
-Matrix3 Matrix3::operator+ (Matrix3& rhs)
+Matrix3 Matrix3::operator+ (const Matrix3& rhs) const
 {
 	return Matrix3(right + rhs.right, forward + rhs.forward, position + rhs.position);
 }
 
-Matrix3 Matrix3::operator- (Matrix3& rhs)
+Matrix3 Matrix3::operator- (const Matrix3& rhs) const
 {
 	return Matrix3(right - rhs.right, forward - rhs.forward, position - rhs.position);
 }
 
-Matrix3 Matrix3::operator* (Matrix3& rhs)
+Matrix3 Matrix3::operator* (const Matrix3& rhs) const
 {
 	Matrix3 matrix;
 
@@ -74,7 +74,7 @@ Matrix3 Matrix3::operator* (Matrix3& rhs)
 	return matrix;
 }
 
-Matrix3& Matrix3::operator+= (Matrix3& rhs)
+Matrix3& Matrix3::operator+= (const Matrix3& rhs)
 {
 	right += rhs.right;
 	forward += rhs.forward;
@@ -83,7 +83,7 @@ Matrix3& Matrix3::operator+= (Matrix3& rhs)
 	return *this;
 }
 
-Matrix3& Matrix3::operator-= (Matrix3& rhs) 
+Matrix3& Matrix3::operator-= (const Matrix3& rhs) 
 {
 	forward -= rhs.forward;
 	right -= rhs.right;
@@ -92,7 +92,7 @@ Matrix3& Matrix3::operator-= (Matrix3& rhs)
 	return *this;
 }
 
-Matrix3& Matrix3::operator*= (Matrix3& rhs)
+Matrix3& Matrix3::operator*= (const Matrix3& rhs)
 {
 	_2D[0][0] = _2D[0][0] * rhs._2D[0][0] + _2D[1][0] * rhs._2D[0][1] + _2D[2][0] * rhs._2D[0][2];
 	_2D[0][1] = _2D[0][1] * rhs._2D[0][0] + _2D[1][1] * rhs._2D[0][1] + _2D[2][1] * rhs._2D[0][2];
@@ -109,7 +109,16 @@ Matrix3& Matrix3::operator*= (Matrix3& rhs)
 	return *this;
 }
 
-Vector3 Matrix3::operator* (Vector3& rhs)
+Matrix3& Matrix3::operator=(const Matrix3& rhs)
+{
+	axes[0] = rhs.axes[0];
+	axes[1] = rhs.axes[1];
+	axes[2] = rhs.axes[2];
+
+	return *this;
+}
+
+Vector3 Matrix3::operator* (const Vector3& rhs) const
 {
 	Vector3 result;
 

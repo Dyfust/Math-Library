@@ -32,15 +32,17 @@ public:
 
 	float& operator[] (const int index);
 
-	Vector4 operator+ (Vector4& rhs);
-	Vector4 operator- (Vector4& rhs);
-	Vector4 operator* (float& scalar);
-	Vector4 operator/ (float& scalar);
+	Vector4 operator+ (const Vector4& rhs) const;
+	Vector4 operator- (const Vector4& rhs) const;
+	Vector4 operator* (const float scalar) const;
+	Vector4 operator/ (const float scalar) const;
 
-	Vector4& operator+= (Vector4& rhs);
-	Vector4& operator-= (Vector4& rhs);
-	Vector4& operator*= (float& scalar);
-	Vector4& operator/= (float& scalar);
+	Vector4& operator+= (const Vector4& rhs);
+	Vector4& operator-= (const Vector4& rhs);
+	Vector4& operator*= (const float scalar);
+	Vector4& operator/= (const float scalar);
+
+	Vector4& operator= (const Vector4& rhs);
 
 	void normalise();
 	Vector4 normalized() const;
@@ -52,5 +54,7 @@ public:
 	Vector4 cross(Vector4& rhs) const;
 
 };
+
+Vector4 operator* (const float lhs, const Vector4& rhs);
 
 #endif // VECTOR4_H

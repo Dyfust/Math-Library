@@ -10,6 +10,7 @@ class Vector3
 public:
 	Vector3();
 	Vector3(float x, float y, float z);
+	~Vector3();
 
 	union
 	{
@@ -40,17 +41,17 @@ public:
 
 	operator const float* () const;
 
-	Vector3 operator+ (Vector3& rhs) const;
-	Vector3 operator- (Vector3& rhs) const;
-	Vector3 operator* (float scalar) const;
-	Vector3 operator/ (float scalar) const;
+	Vector3 operator+ (const Vector3& rhs) const;
+	Vector3 operator- (const Vector3& rhs) const;
+	Vector3 operator* (const float scalar) const;
+	Vector3 operator/ (const float scalar) const;
 
-	Vector3& operator+= (Vector3 rhs);
-	Vector3& operator-= (Vector3& rhs);
-	Vector3& operator*= (float scalar);
-	Vector3& operator/= (float scalar);
+	Vector3& operator+= (const Vector3 rhs);
+	Vector3& operator-= (const Vector3& rhs);
+	Vector3& operator*= (const float scalar);
+	Vector3& operator/= (const float scalar);
 
-	Vector3& operator= (Vector3& rhs);
+	Vector3& operator= (const Vector3& rhs);
 
 	float square_magnitude() const;
 	float magnitude() const;
@@ -61,5 +62,7 @@ public:
 	float dot(Vector3& rhs) const;
 	Vector3 cross(Vector3& rhs) const;
 };
+
+Vector3 operator* (const float lhs, const Vector3 rhs);
 
 #endif // !VECTOR3_H
