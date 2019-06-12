@@ -40,9 +40,9 @@ Matrix3::operator const float*() const
 	return _1D;
 }
 
-Vector3& Matrix3::operator[] (const int index_a)
+Vector3& Matrix3::operator[] (const int index)
 {
-	return axes[index_a];
+	return axes[index];
 }
 
 Matrix3 Matrix3::operator+ (const Matrix3& rhs) const
@@ -99,12 +99,12 @@ Matrix3& Matrix3::operator*= (const Matrix3& rhs)
 	_2D[0][2] = _2D[0][2] * rhs._2D[0][0] + _2D[1][2] * rhs._2D[0][1] + _2D[2][2] * rhs._2D[0][2];
 
 	_2D[1][0] = _2D[0][0] * rhs._2D[1][0] + _2D[1][0] * rhs._2D[1][1] + _2D[2][0] * rhs._2D[1][2];
-	_2D[1][1] = _2D[0][1] * rhs._2D[1][0] + _2D[1][1] * rhs._2D[1][1] + _2D[2][1] * rhs._2D[1][2]; // DO THIS
-	_2D[1][2] = _2D[0][2] * rhs._2D[1][0] + _2D[1][2] * rhs._2D[1][1] + _2D[2][2] * rhs._2D[1][2]; // DO THIS
+	_2D[1][1] = _2D[0][1] * rhs._2D[1][0] + _2D[1][1] * rhs._2D[1][1] + _2D[2][1] * rhs._2D[1][2];
+	_2D[1][2] = _2D[0][2] * rhs._2D[1][0] + _2D[1][2] * rhs._2D[1][1] + _2D[2][2] * rhs._2D[1][2]; 
 
 	_2D[2][0] = _2D[0][0] * rhs._2D[2][0] + _2D[1][0] * rhs._2D[2][1] + _2D[2][0] * rhs._2D[2][2];
-	_2D[2][1] = _2D[0][1] * rhs._2D[2][0] + _2D[1][1] * rhs._2D[2][1] + _2D[2][1] * rhs._2D[2][2]; // DO THIS
-	_2D[2][2] = _2D[0][2] * rhs._2D[2][0] + _2D[1][2] * rhs._2D[2][1] + _2D[2][2] * rhs._2D[2][2]; // DO THIS
+	_2D[2][1] = _2D[0][1] * rhs._2D[2][0] + _2D[1][1] * rhs._2D[2][1] + _2D[2][1] * rhs._2D[2][2];
+	_2D[2][2] = _2D[0][2] * rhs._2D[2][0] + _2D[1][2] * rhs._2D[2][1] + _2D[2][2] * rhs._2D[2][2];
 
 	return *this;
 }
@@ -129,26 +129,26 @@ Vector3 Matrix3::operator* (const Vector3& rhs) const
 	return result;
 }
 
-void Matrix3::setRotateX(const float& a_rotation)
+void Matrix3::setRotateX(const float& rotation)
 {
-	_2D[1][1] = cos(a_rotation);
-	_2D[1][2] = sin(a_rotation);
-	_2D[2][1] = -sin(a_rotation);
-	_2D[2][2] = cos(a_rotation);
+	_2D[1][1] = cos(rotation);
+	_2D[1][2] = sin(rotation);
+	_2D[2][1] = -sin(rotation);
+	_2D[2][2] = cos(rotation);
 }
 
-void Matrix3::setRotateY(const float& a_rotation)
+void Matrix3::setRotateY(const float& rotation)
 {
-	_2D[0][0] = cos(a_rotation);
-	_2D[0][2] = -sin(a_rotation);
-	_2D[2][0] = sin(a_rotation);
-	_2D[2][2] = cos(a_rotation);
+	_2D[0][0] = cos(rotation);
+	_2D[0][2] = -sin(rotation);
+	_2D[2][0] = sin(rotation);
+	_2D[2][2] = cos(rotation);
 }
 
-void Matrix3::setRotateZ(const float& a_rotation)
+void Matrix3::setRotateZ(const float& rotation)
 {
-	_2D[0][0] = cos(a_rotation);
-	_2D[0][1] = sin(a_rotation);
-	_2D[1][0] = -sin(a_rotation);
-	_2D[1][1] = cos(a_rotation);
+	_2D[0][0] = cos(rotation);
+	_2D[0][1] = sin(rotation);
+	_2D[1][0] = -sin(rotation);
+	_2D[1][1] = cos(rotation);
 }

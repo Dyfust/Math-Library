@@ -9,13 +9,11 @@ Vector4::Vector4()
 	w = 0.0f;
 }
 
-Vector4::Vector4(float a_x, float a_y, float a_z, float a_w) : x(a_x), y(a_y), z(a_z), w(a_w)
-{}
+Vector4::Vector4(float x, float y, float z, float w) : x(x), y(y), z(z), w(w)
+{ }
 
 Vector4::~Vector4()
-{
-
-}
+{ }
 
 Vector4::operator float* () 
 {

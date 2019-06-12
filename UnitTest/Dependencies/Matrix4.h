@@ -7,7 +7,7 @@ class Matrix4
 {
 public:
 
-	// --- Data definitions ---
+	// Different ways of identifying the same data.
 	union
 	{
 		struct
@@ -30,49 +30,39 @@ public:
 	};
 
 
-	// --- Constructors ---
-	Matrix4(const float a_m00 = 1.0f, const float a_m01 = 0.0f, const float a_m02 = 0.0f, const float a_m03 = 0.0f,	 // Column1
-		const float a_m10 = 0.0f, const float a_m11 = 1.0f, const float a_m12 = 0.0f, const float a_m13 = 0.0f,	 // Column2
-		const float a_m20 = 0.0f, const float a_m21 = 0.0f, const float a_m22 = 1.0f, const float a_m23 = 0.0f,
-		const float a_m30 = 0.0f, const float a_m31 = 0.0f, const float a_m32 = 0.0f, const float a_m33 = 1.0f);
+	// Initializer list.
+	Matrix4(const float m00 = 1.0f, const float m01 = 0.0f, const float m02 = 0.0f, const float m03 = 0.0f,	 // Column1
+		const float m10 = 0.0f, const float m11 = 1.0f, const float m12 = 0.0f, const float m13 = 0.0f,	 // Column2
+		const float m20 = 0.0f, const float m21 = 0.0f, const float m22 = 1.0f, const float m23 = 0.0f,
+		const float m30 = 0.0f, const float m31 = 0.0f, const float m32 = 0.0f, const float m33 = 1.0f);
 
-	Matrix4(const Vector4& a_right, const Vector4& a_up, const Vector4& a_forwards, const Vector4& a_position);
-
-	Matrix4(const Matrix4& a_matrix);
-
+	Matrix4(const Vector4& right, const Vector4& up, const Vector4& forwards, const Vector4& position);
+	Matrix4(const Matrix4& matrix);
 	~Matrix4();
 
+	// Overloaded subscript operator to access the different axes in the matrix.
+	Vector4& operator[] (const int index);
+	const Vector4& operator[] (const int index) const;
 
-	//! \brief Casting mutable float* operator overloading.
+	// Overloaded float* operator to get a pointer to an array of elements which forms an axis. (tbh, im not really sure what this does to be exact)
 	operator float* ();
-	//! \brief Casting read only float* operator overloading.
 	operator const float* () const;
 
-	// --- Operator overloads ---
-	Vector4& operator [] (const int a_index);
+	// Overloaded arithmetic operations with matrices & vectors.
+	Matrix4 operator* (const Matrix4& rhs) const;
+	Vector4 operator* (const Vector4& rhs) const;
+	Matrix4& operator*= (const Matrix4& rhs);
+	Matrix4 operator+ (const Matrix4& rhs) const;
+	Matrix4& operator+= (const Matrix4& rhs);
+	Matrix4 operator- (const Matrix4& rhs) const;
+	Matrix4& operator-= (const Matrix4& rhs);
 
-	const Vector4& operator [] (const int a_index) const;
+	// Overloaded assignment operator.
+	Matrix4& operator= (const Matrix4& rhs);
 
-	Matrix4 operator* (const Matrix4& a_rhs) const;
-
-	Vector4 operator* (const Vector4& a_rhs) const;
-
-	Matrix4& operator*= (const Matrix4& a_rhs);
-
-	Matrix4 operator+ (const Matrix4& a_rhs) const;
-
-	Matrix4& operator+= (const Matrix4& a_rhs);
-
-	Matrix4 operator- (const Matrix4& a_rhs) const;
-
-	Matrix4& operator-= (const Matrix4& a_rhs);
-
-	Matrix4& operator= (const Matrix4& a_rhs);
-
-	// --- Transform controls ---
-
-	void setRotateX(const float& a_rotation);
-	void setRotateY(const float& a_rotation);
-	void setRotateZ(const float& a_rotation);
+	// Functions to transform the matrix into a rotation matrix.
+	void setRotateX(const float& rotation);
+	void setRotateY(const float& rotation);
+	void setRotateZ(const float& rotation);
 };
 #endif // !MATRIX4_H
